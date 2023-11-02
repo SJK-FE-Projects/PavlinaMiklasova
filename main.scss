@@ -1,0 +1,180 @@
+//MODULES
+
+
+//MIXINS
+@font-face {
+    font-family: "Atlantic";
+    src: url("fonts/gc16_Mono.woff");
+}
+
+@mixin Headline {
+    font-family: "Atlantic";
+    font-size: 10vw;
+    letter-spacing: -0.2vw;
+    line-height: 10vw;
+    text-align: justify;
+color: black;
+}
+
+@mixin Headline2 {
+    font-family: "Atlantic";
+    font-size: 5vw;
+    letter-spacing: -0.3vw;
+    line-height: 4vw;
+    text-align: left;
+    text-transform: capitalize;
+    color: black;
+
+
+}
+
+@mixin BodyText {
+    font-family: "Atlantic";
+    font-size: 1.5vw;
+    letter-spacing: -0.1vw;
+}
+
+
+
+// VARIABLES
+
+$background-color: white;
+$text-link-transition: all 1s cubic-bezier(0.49, 0.99, 0.54, 0.98);
+
+
+
+//ANIMATIONS
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+  }
+
+
+// CSS
+
+body {
+
+    background-color: $background-color;
+}
+
+.headline {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-color;
+    top: 0;
+    @include Headline();
+    width: 100%;
+    height: 11vw;
+    border-bottom: 1px solid black;
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    .side-bar {
+        grid-column-start: 0;
+        grid-column-end: 2;
+        border-right: 1px solid black;
+        overflow-y: scroll;
+        padding-top: 8px;
+        height: 88vh;
+
+        :hover {
+            width: 125%;
+        }
+
+        .miniature {
+            margin-bottom: 8px;
+            padding-right: 8px;
+
+            img {
+                width: 100%;
+
+                :hover {
+                    width: 125%;
+                }
+            }
+        }
+    }
+
+    .main-content {
+        display: block;
+        grid-column-start: span 11;
+        padding-inline: 8px;
+        padding-top: 8px;
+        height: 88vh;
+        overflow-y: scroll;
+
+        .slider-main {
+
+
+            display: flex;
+            flex-direction: row;
+            height: 600px;
+            width: 100%;
+            overflow-x: scroll;
+
+            .main-slider {
+                height: 100%;
+
+
+                img {
+                    height: 100%;
+                    object-fit: fill
+                }
+            }
+        }
+
+        .headline2 {
+            @include Headline2();
+            width: 100%;
+            text-decoration: none;
+
+            .hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 5vw;
+  left: 0;
+  background-color: black;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+        }
+
+        .body-text {
+            @include BodyText();
+            width: 100%;
+
+            ul {
+                margin-left: 0;
+                padding-left: 0;
+
+                li {
+                    list-style: none outside;
+
+                }
+            }
+        }
+    }
+
+
+}
