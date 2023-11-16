@@ -115,6 +115,11 @@ body {
   color: black;
   width: 100%;
   text-decoration: none;
+  /* unvisited link */
+}
+
+.content-container .main-content .headline2 :link {
+  color: black;
 }
 
 .content-container .main-content .headline2 .hover-underline-animation {

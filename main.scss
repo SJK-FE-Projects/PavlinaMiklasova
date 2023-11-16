@@ -133,6 +133,12 @@ body {
             @include Headline2();
             width: 100%;
             text-decoration: none;
+/* unvisited link */
+:link {
+    color: black;
+  }
+  
+
 
             .hover-underline-animation {
   display: inline-block;
